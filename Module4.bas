@@ -1,7 +1,5 @@
 Attribute VB_Name = "Module4"
-Option Explicit
-
-Public Sub ErrorRep(rouName, rouType, curVal, errNum, errDesc, miscInfo)
+Public Sub ErrorReport(rouName, rouType, curVal, errNum, errDesc, miscInfo)
     
     Dim oApp As Object, oEmail As MailItem, arrEmailTxt(10) As String
     Dim outlookOpen As Boolean, emailTxt As String, varMsg As Variant

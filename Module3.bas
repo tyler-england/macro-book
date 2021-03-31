@@ -37,6 +37,7 @@ Public Sub ExportModules(wb As Workbook)
     End If
     sFolderPath = sFolderPath & sSubFolder & "\" 'vba modules folder
     sFileFolder = Replace(Replace(Replace(Replace(Replace(wb.Path & "\" & wb.Name, "\", "-"), ".", ""), ":", "+"), " ", ""), "/", "-")
+    sFileFolder = Replace(sFileFolder, "https+--bw1-mysharepointcom-personal-tyler_england_bwpackagingsystems_com-Documents", "OneDrive--")
     sSubFolder = Dir(sFolderPath & sFileFolder, vbDirectory)
     If sSubFolder = "" Then 'folder doesn't exist
         bNewFolder = True
@@ -44,7 +45,7 @@ Public Sub ExportModules(wb As Workbook)
         Do While sSubFolder <> "" 'check for any partial matches (diff path, etc)
             varVar = MsgBox("No folder exists with the following name..." & vbCrLf & sFileFolder & _
                     vbCrLf & vbCrLf & "However this folder does exist..." & vbCrLf & sSubFolder & _
-                    vbCrLf & vbCrLf & "Do you want to use this one instead?", vbYesNo, "VBA Modules")
+                    vbCrLf & vbCrLf & "Do you want to rename the existing one and use it?", vbYesNo, "VBA Modules")
             If varVar = vbYes Then 'use this folder -> don't make a new one
                 Name sFolderPath & sSubFolder As sFolderPath & sFileFolder
                 bNewFolder = False
